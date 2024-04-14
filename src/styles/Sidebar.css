@@ -1,0 +1,90 @@
+.section {
+  color: white;
+  background-color: #000000;
+}
+
+.section ul {
+  display: flex;
+  opacity: 0.955;
+  flex-direction: column;
+  position: absolute;
+  list-style-type: none;
+  width: 205px;
+  background-color: #000000;
+  text-align: center;
+  height: 100%;
+  overflow: auto;
+  font-size: larger;
+}
+
+.section ul li {
+  margin-bottom: 5px;
+  text-align: left;
+  padding: 8% 8% 0 15%;
+}
+
+.menu {
+  user-select: none;
+  color: #ffffff;
+  display: flex;
+  gap: 10px;
+}
+
+.menu:hover {
+  cursor: pointer;
+  color: black;
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.section ul .copyright {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.537em;
+  color: red;
+}
+
+
+.brand img {
+  user-select: none;
+  margin: 15px;
+  width: 70px;
+
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -205px;
+  width: 205px;
+  /*13.85*/
+  height: 100%;
+  /* background-color: rgb(255, 0, 0); */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.toggle-button {
+  color: #ffffff;
+  position: fixed;
+  top: 15px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.toggle-button.active {
+  color: red;
+  transition: 0.2s ease;
+
+
+}
