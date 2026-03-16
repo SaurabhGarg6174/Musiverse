@@ -5,8 +5,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Hamdard - Arijit Singh.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Hamdard - Arijit Singh.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "O Bedardeya",
@@ -14,8 +14,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/O Bedardeya - Arijit Singh.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/O Bedardeya - Arijit Singh.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Kabhi Jo Baadal Barse",
@@ -23,8 +23,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Kabhi Jo Baadal Barse - Arijit Singh.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Kabhi Jo Baadal Barse - Arijit Singh.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Phir Aur Kya Chahiye",
@@ -32,8 +32,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Phir Aur Kya Chahiye - Arijit Singh.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Phir Aur Kya Chahiye - Arijit Singh.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Phir Mohabbat",
@@ -41,8 +41,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Phir Mohabbat - Arijit Singh.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Phir Mohabbat - Arijit Singh.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Tu Hi Meri Shab Hai",
@@ -50,8 +50,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Tu Hi Meri Shab Hai - KK.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Tu Hi Meri Shab Hai - KK.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Labon Ko",
@@ -59,8 +59,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Labon Ko - KK.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Labon Ko - KK.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Dil Ibaadat",
@@ -68,8 +68,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Dil Ibaadat - KK.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Dil Ibaadat - KK.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Woh Lamhe Woh Baatein",
@@ -77,8 +77,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Woh Lamhe Woh Baatein - Atif Aslam.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Woh Lamhe Woh Baatein - Atif Aslam.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Pehli Nazar Mein",
@@ -86,8 +86,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Pehli Nazar Mein - Atif Aslam.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Pehli Nazar Mein - Atif Aslam.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Tere Bin",
@@ -95,8 +95,8 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Tere Bin - Atif Aslam.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Tere Bin - Atif Aslam.mp3",
+        "coverPath": "/Poster.webp"
     },
     {
         "title": "Toh Phir Aao",
@@ -104,9 +104,9 @@ const data = [
         "album": "Hindi",
         "duration": 0,
         "genre": "Bollywood",
-        "filePath": "src/assets/Songs/Toh Phir Aao - Awarapan.mp3",
-        "coverPath": "src/assets/Poster.webp"
+        "filePath": "/Songs/Toh Phir Aao - Awarapan.mp3",
+        "coverPath": "/Poster.webp"
     }
 ]
 
-export default data;
+export default data;

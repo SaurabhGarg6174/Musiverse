@@ -1,58 +1,67 @@
-import { useState } from "react";
+import React from "react";
 import "../styles/Sidebar.css";
 import { Link } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ isCollapsed, setIsCollapsed }) {
   const date = new Date();
   const year = date.getFullYear();
 
-  const [isOpen, setIsOpen] = useState(false);
-
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+    setIsCollapsed(!isCollapsed);
   };
   return (
     <>
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
-        <button
-          className={`toggle-button ${isOpen ? "active" : ""}`}
-          onClick={toggleSidebar}
-        >
-          <i className="fas fa-bars"></i>
-        </button>
+      <div className={`sidebar ${isCollapsed ? "collapsed-ui" : ""}`}>
+        <div className="sidebar-top">
+          <div className="brand">
+            <img src="/logo.png" alt="Musiverse" />
+            {!isCollapsed && <span>Musiverse</span>}
+          </div>
+          <button
+            className="toggle-button"
+            onClick={toggleSidebar}
+          >
+            <i className={`fas fa-${isCollapsed ? "bars" : "times"}`}></i>
+          </button>
+        </div>
 
-        <section className="section">
+
+        <nav className="sidebar-nav">
           <ul>
-            <li className="brand">
-              <img src="src/assets/logo.png" alt="Musiverse" />
-            </li>
             <Link className="link" to="/">
               <li className="menu">
                 <i className="fas fa-home"></i>
-                <div>Home</div>
+                {!isCollapsed && <div className="menu-text">Home</div>}
               </li>
             </Link>
             <Link className="link" to="/library">
               <li className="menu">
-                <i className="fas fa-folder"></i>
-                <div>Library</div>
+                <i className="fas fa-layer-group"></i>
+                {!isCollapsed && <div className="menu-text">Library</div>}
               </li>
             </Link>
             <Link className="link" to="/contact">
               <li className="menu">
-                <i className="fas fa-phone"></i>
-                <div>Contact Us</div>
+                <i className="fas fa-envelope"></i>
+                {!isCollapsed && <div className="menu-text">Contact Us</div>}
               </li>
             </Link>
-            <li className="copyright">
-              &copy; {year} Musiverse. All rights reserved. Designed by Saurabh
-              Garg
-            </li>
           </ul>
-        </section>
+        </nav>
+
+        {!isCollapsed && (
+          <div className="sidebar-footer">
+            <p className="copyright">
+              &copy; {year} Musiverse <br />
+              Designed by Saurabh Garg
+            </p>
+          </div>
+        )}
       </div>
     </>
   );
 }
+
+
 
 export default Sidebar;

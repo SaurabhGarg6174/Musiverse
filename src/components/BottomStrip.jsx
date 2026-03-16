@@ -1,44 +1,92 @@
-import { useState } from "react";
+import React from "react";
+import { usePlayer } from "../context/PlayerContext";
 import "../styles/Bottom.css";
 
-const BottomStrip = ({progress}) => {
-
+const BottomStrip = () => {
+  const {
+    currentSong,
+    isPlaying,
+    progress,
+    togglePlay,
+    playNext,
+    playPrevious,
+    isShuffle,
+    isRepeat,
+    toggleShuffle,
+    toggleRepeat,
+    seek,
+    setVolume,
+    volume,
+  } = usePlayer();
 
 
   return (
     <div className="bottomStrip">
-      <div className="center-items">
-        <input type="range" name="range" id="progressBar" value={progress} min="0" max="100"/>
-        <span id="songName">Song Names</span>
-        <div className="lower">
-          <div className="icon">
-            <i className="fa-solid fa-2x fa-shuffle"></i>
-            <i className="fa-solid fa-2x fa-backward-step"></i>
-            <i className="fa-solid fa-2x fa-circle-play" id="masterPlay"></i>
-            <i className="fa-solid fa-2x fa-forward-step"></i>
-            <i className="fa-solid fa-2x fa-repeat"></i>
-          </div>
+      <div className="player-left">
+        {currentSong && (
+          <>
+            <img src={currentSong.coverPath} alt={currentSong.title} className="current-song-cover" />
+            <div className="song-details">
+              <div className="song-title">{currentSong.title}</div>
+              <div className="song-artist">{currentSong.artist}</div>
+            </div>
+          </>
+        )}
+      </div>
 
-          <div id="volumeControl">
-            <i
-              className="fa-solid fa-volume-down"
-              id="volumeDown"
-              style={{ display: "none" }} //remove this later
-            ></i>
-            <i className="fa-solid fa-volume-up" id="volumeUp"></i>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value="0.5"
-              id="volumeSlider"
-            />
+      <div className="player-center">
+        <div className="playback-icons">
+          <i
+            className="fa-solid fa-shuffle"
+            style={{ color: isShuffle ? "var(--accent-primary)" : "var(--text-muted)" }}
+            onClick={toggleShuffle}
+          ></i>
+          <i className="fa-solid fa-backward-step" onClick={playPrevious}></i>
+          <div className="play-pause-btn" onClick={togglePlay}>
+            <i className={`fa-solid fa-${isPlaying ? "pause" : "play"}`}></i>
           </div>
+          <i className="fa-solid fa-forward-step" onClick={playNext}></i>
+          <i
+            className="fa-solid fa-repeat"
+            style={{ color: isRepeat ? "var(--accent-primary)" : "var(--text-muted)" }}
+            onClick={toggleRepeat}
+          ></i>
+        </div>
+        <div className="progress-bar-container">
+          <input
+            type="range"
+            name="range"
+            id="progressBar"
+            value={progress}
+            min="0"
+            max={100}
+            onChange={(e) => seek(parseFloat(e.target.value))}
+            style={{ backgroundSize: `${progress}% 100%` }}
+          />
         </div>
       </div>
+
+      <div className="player-right">
+        <div className="volume-wrapper">
+          <i className="fa-solid fa-volume-low"></i>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            id="volumeSlider"
+            onChange={(e) => setVolume(parseFloat(e.target.value))}
+            style={{ backgroundSize: `${volume * 100}% 100%` }}
+          />
+          <i className="fa-solid fa-volume-high"></i>
+        </div>
+      </div>
+
     </div>
   );
 };
 
+
 export default BottomStrip;
+

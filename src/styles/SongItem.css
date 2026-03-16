@@ -1,23 +1,96 @@
- .songList .songItem {
-     /* border: 2px solid red; */
-     padding: 15px 45px;
-     color: white;
-     width: fit-content;
+.song-card {
+  background-color: var(--bg-surface);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  animation: fadeIn 0.4s ease forwards;
+  position: relative;
+}
 
- }
+.song-card:hover {
+  background-color: var(--bg-surface-hover);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
 
- .songList .songItem img {
-     padding: 8px 0;
-     cursor: pointer;
-     width: 150px;
-     height: 170px;
-     object-fit: cover;
-     border-radius: 15px;
-     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-     transition: all 0.2s ease-in-out;
- }
+.image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
- .songList .songItem img:hover {
-     transform: scale(1.1);
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
 
- }
+.song-card:hover .image-container img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.overlay.active, .song-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay i {
+  font-size: 3rem;
+  color: var(--accent-primary);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  transform: translateY(10px);
+  transition: var(--transition);
+}
+
+.overlay i.fa-play {
+  padding-left: 6px; /* Larger font size, larger offset needed */
+}
+
+.overlay.active i, .song-card:hover .overlay i {
+  transform: translateY(0);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-info .song-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-info .song-artist {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

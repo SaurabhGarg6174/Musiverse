@@ -7,18 +7,50 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies
+node_modules/
+dist/
+dist-ssr/
 *.local
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+
+# Testing
+coverage/
+__snapshots__/
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.patch
+*.diff
+
+# OS Specific
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Media Assets
+# public/Songs/
+# public/Covers/
+
+# Build artifacts
+.eslintcache
+.stylelintcache
+node_modules/.cache/

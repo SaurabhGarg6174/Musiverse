@@ -1,57 +1,44 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import "./Style.css";
 
-export default function SignUp() {
-  const signup = () => {};
-
-  const googleLogin = () => {};
-
-  const facebookLogin = () => {};
-
+const SignUp = () => {
   return (
-    <div className="dabba">
-      <div id="signupForm" className="form">
-        <h2>Sign Up</h2>
-        <div className="form-group">
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            placeholder="Enter your first name"
-          />
+    <div className="auth-page">
+      <div className="auth-card glass">
+        <div className="auth-header">
+          <img src="/logo.png" alt="Musiverse" />
+          <h2>Create Account</h2>
+          <p>Join Musiverse and start your musical journey.</p>
         </div>
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name:</label>
-          <input type="text" id="lastName" placeholder="Enter your last name" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="emailAddress">Email Address:</label>
-          <input
-            type="text"
-            id="emailAddress"
-            placeholder="Enter your e-mail"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="signupPassword">Password:</label>
-          <input
-            type="password"
-            id="signupPassword"
-            placeholder="Choose a password"
-          />
-        </div>
-        <div className="form-group">
-          <button onClick={signup}>Sign Up</button>
-        </div>
-        <div style={{ textAlign: "center" }}>----- Or signup with -----</div>
-        <div className="alternate">
-          <button id="google" onClick={googleLogin}>
-            Google
-          </button>
-          <button id="facebook" onClick={facebookLogin}>
-            Facebook
-          </button>
+        
+        <form className="auth-form">
+          <div className="form-group">
+            <label htmlFor="fullname">Full Name</label>
+            <input type="text" id="fullname" placeholder="John Doe" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input type="email" id="email" placeholder="john@example.com" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" placeholder="Choose a secure password" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required />
+          </div>
+          <p className="terms">By signing up, you agree to our <Link to="#">Terms of Service</Link> and <Link to="#">Privacy Policy</Link>.</p>
+          <button type="submit" className="btn btn-primary auth-btn">Create Account</button>
+        </form>
+        
+        <div className="auth-footer">
+          <p>Already have an account? <Link to="/login">Log In</Link></p>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SignUp;

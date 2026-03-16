@@ -1,7 +1,6 @@
-import React, { useState } from "react"; 
+import React from "react"; 
 import "../src/styles/App.css";
 import Library from "./pages/Library";
-import Card from "./components/Temp";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
@@ -10,28 +9,42 @@ import Navbar from "./components/Navbar";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import BottomStrip from "./components/BottomStrip";
+import { PlayerProvider, usePlayer } from "./context/PlayerContext";
+import songs from "./assets/songs";
 
-function App() {
-  const [progress, setProgress] = useState(0);
-  const updateProgress = (newProgress) => {
-    setProgress(newProgress);
-  };
+const MainLayout = () => {
+  const [isCollapsed, setIsCollapsed] = React.useState(false);
+  const { currentSongIndex } = usePlayer();
+  const showPlayer = currentSongIndex !== null;
 
   return (
-    <>
-      <Sidebar />
+    <div id="root-container" className={`${isCollapsed ? "collapsed" : ""} ${!showPlayer ? "no-player" : ""}`}>
+      <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/library" element={<Library progressUpdater={updateProgress} />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/apiTest" element={<Card />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
-      <BottomStrip progress={progress} />
-    </>
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </div>
+      {showPlayer && <BottomStrip />}
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <PlayerProvider songs={songs}>
+      <MainLayout />
+    </PlayerProvider>
   );
 }
 
+
+
+
 export default App;
+

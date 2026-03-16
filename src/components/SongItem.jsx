@@ -1,77 +1,28 @@
-// import data from "../assets/songs";
-import { useMemo, useState } from "react";
+import React from "react";
+import { usePlayer } from "../context/PlayerContext";
 import "../styles/SongItem.css";
 
 function SongItem(props) {
-  const [isPlaying, setIsPlaying] = useState(false);
-const [songIndex, setSongIndex] = useState(0)/*parseInt(props.key)*/;
-
-  // const audioElement = useMemo(() => new Audio(song.filePath), [])
-  const audioElement = useMemo(
-    () => new Audio(props.filePath),
-    [props.filePath]
-  );
-
-  // useEffect(() => {
-  //   const handleTimeUpdate = () => {
-  //     const currentTime = audioElement.currentTime;
-  //     const duration = audioElement.duration;
-  //     const progressPercent = (currentTime / duration) * 100;
-  //     props.progressUpdater(progressPercent); // Update progress in parent component
-  //   };
-
-  //   audioElement.addEventListener("timeupdate", handleTimeUpdate);
-
-  //   return () => {
-  //     audioElement.removeEventListener("timeupdate", handleTimeUpdate);
-  //   };
-  // }, [audioElement, progressUpdater]);
+  const { playSong, isPlaying, currentSongIndex } = usePlayer();
   
-
-  // Rest of the component
-
-  const togglePlay = () => {
-    if (audioElement.paused && audioElement.currentTime <= 0 /*!isPlaying*/) {
-      audioElement.play();
-      setIsPlaying(true);
-    } else {
-      audioElement.paused ? audioElement.play() : audioElement.pause();
-      setIsPlaying(!audioElement.paused);
-    }
-  };
-
-  // if(audioElement.ended) setIsPlaying(false);
-  //play next song in the array
-  if (audioElement && audioElement.ended) {
-    const nextIndex = (songIndex + 1) % props.songs.length;
-    setSongIndex(nextIndex);
-    audioElement.currentTime = 0;
-    audioElement.play();
-    setIsPlaying(true);
-  }
+  const isThisSongPlaying = isPlaying && currentSongIndex === props.index;
 
   return (
-    <div className="songList">
-      <div className="songItem" onClick={togglePlay}>
-        <img src={props.coverPath} alt="___" />
-        <br />
-        <i
-          className={`fa-solid fa-circle-${isPlaying ? "pause" : "play"}`}
-        ></i>{" "}
-        <span id="displayName">
-          {props.title} - {props.artist}
-        </span>
+    <div className="song-card" onClick={() => playSong(props.index)}>
+      <div className="image-container">
+        <img src={props.coverPath} alt={props.title} />
+        <div className={`overlay ${isThisSongPlaying ? "active" : ""}`}>
+          <i className={`fa-solid fa-${isThisSongPlaying ? "pause" : "play"}`}></i>
+        </div>
+      </div>
+      <div className="card-info">
+        <div className="song-title">{props.title}</div>
+        <div className="song-artist">{props.artist}</div>
       </div>
     </div>
   );
 }
 
+
 export default SongItem;
 
-//IMPLEMENT THE LOGIC FOR PLAYING SONGS HERE
-
-// const playNext = () =>{
-//   songIndex = (songIndex + 1) %
-// }
-
-// || audioElement.currentTime <= 0

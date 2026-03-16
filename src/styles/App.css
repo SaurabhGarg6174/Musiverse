@@ -1,51 +1,90 @@
-* {
-  font-family: 'Ubuntu', sans-serif;
-  margin: 0;
-  padding: 0;
+#root-container {
+  display: grid;
+  grid-template-areas:
+    "sidebar navbar"
+    "sidebar main"
+    "player player";
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  transition: grid-template-columns 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-body,
-html {
-  height: 100%;
-  margin: 0;
+#root-container.collapsed {
+  grid-template-columns: 80px 1fr;
 }
 
+#root-container.no-player {
+  grid-template-areas:
+    "sidebar navbar"
+    "sidebar main";
+  grid-template-rows: auto 1fr;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--glass-border);
+  transition: width 0.3s ease;
+}
+
+.TopBar {
+  grid-area: navbar;
+  background-color: transparent;
+  padding: 24px 40px 12px 40px;
+}
+
+.main-content {
+  grid-area: main;
+  overflow-y: auto;
+  background: linear-gradient(180deg, rgba(30, 30, 34, 0.4) 0%, var(--bg-main) 600px);
+}
+
+.home, .library, .contact-us, .auth-page {
+  padding: 20px 40px 40px 40px;
+}
+
+#root-container:not(.no-player) .home, 
+#root-container:not(.no-player) .library,
+#root-container:not(.no-player) .contact-us,
+#root-container:not(.no-player) .auth-page {
+  padding-bottom: 120px; /* Extra space for player bar */
+}
+
+
+
+.bottomStrip {
+  grid-area: player;
+  height: 90px;
+  background-color: var(--bg-sidebar);
+  border-top: 1px solid var(--glass-border);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Common list styles */
 .listContainer {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  /* border: 2px solid rgb(0, 13, 255); */
-  padding: 0 20px;
-  font-size: 1.125rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
-.icon i{
-  color: whitesmoke;
-  padding: 15px 10px;
-  cursor: pointer;
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-i{
-  cursor: pointer;
-
+main > * {
+  animation: fadeIn 0.4s ease forwards;
 }
-
-/* scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #a9a9a91f;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} 
